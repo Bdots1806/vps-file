@@ -45,17 +45,18 @@ export class PVService {
       pidate,
       pedate,
       adprof,
-      pov};
+      pov,
+    imagePath};
     this.http
       .post<{ message: string; appId: string }>(
         'http://localhost:3000/api/policever',
         app
       )
       .subscribe(responseData => {
-        const id = responseData.postId;
-        post.id = id;
-        this.posts.push(post);
-        this.postsUpdated.next([...this.posts]);
+        const id = responseData.PVId;
+        app.id = id;
+        this.apps.push(app);
+        this.appsUpdated.next([...this.apps]);
       });
   }
 }
