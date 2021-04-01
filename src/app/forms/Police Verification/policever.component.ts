@@ -54,7 +54,7 @@ export class PoliceVerificationComponent implements OnInit{
         this.mode = 'edit';
         this.PVId = paramMap.get('PVId');
         this.isLoading = true;
-        this.PVService.getapp(this.PVId).subscribe(appData => {
+        this.PVService.getappo(this.PVId).subscribe(appData => {
           this.isLoading = false;
           this.app = {
             id: appData._id,
@@ -109,7 +109,7 @@ export class PoliceVerificationComponent implements OnInit{
     });
   }
 
-  onImagePicked(event: Event) {
+  onImagePicked(event: Event): any {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ image: file });
     this.form.get('image').updateValueAndValidity();
@@ -144,7 +144,8 @@ export class PoliceVerificationComponent implements OnInit{
         this.form.value.pidate,
         this.form.value.pedate,
         this.form.value.adprof,
-        this.form.value.pov
+        this.form.value.pov,
+        this.form.value.image
       );
       // } else {
       //   this.postsService.updatePost(

@@ -82,13 +82,30 @@ router.put(
       const url = req.protocol + "://" + req.get("host");
       imagePath = url + "/images/" + req.file.filename;
     }
-    const post = new Post({
+    const app = new PV({
       _id: req.body.id,
-      title: req.body.title,
-      content: req.body.content,
+      fname: req.body.fname,
+      mname: req.body.mname,
+      surname: req.body.surname,
+      mobile: req.body.mobile,
+      anumber: req.body.anumber,
+      email: req.body.email,
+      country: req.body.country,
+      state: req.body.state,
+      district: req.body.district,
+      pstation: req.body.pstation,
+      address: req.body.address,
+      occupation: req.body.occupation,
+      city: req.body.city,
+      pincode: req.body.pincode,
+      pnumber: req.body.pnumber,
+      pidate: req.body.pidate,
+      pedate: req.body.pedate,
+      adprof: req.body.adprof,
+      pov: req.body.pov,
       imagePath: imagePath
     });
-    console.log(post);
+    console.log(app);
     Post.updateOne({ _id: req.params.id }, post).then(result => {
       res.status(200).json({ message: "Update successful!" });
     });
@@ -98,28 +115,28 @@ router.put(
 router.get("", (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
-  const postQuery = Post.find();
+  const appQuery = App.find();
   let fetchedPosts;
   if (pageSize && currentPage) {
-    postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
+    appQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
-  postQuery
+  appQuery
     .then(documents => {
-      fetchedPosts = documents;
-      return Post.count();
+      fetchedApps = documents;
+      return App.count();
     })
     .then(count => {
       res.status(200).json({
         message: "Posts fetched successfully!",
-        posts: fetchedPosts,
-        maxPosts: count
+        apps: fetchedApps,
+        maxApps: count
       });
     });
 });
 
 router.get("/:id", (req, res, next) => {
-  Post.findById(req.params.id).then(post => {
-    if (post) {
+  Post.findById(req.params.id).then(app => {
+    if (app) {
       res.status(200).json(post);
     } else {
       res.status(404).json({ message: "Post not found!" });
