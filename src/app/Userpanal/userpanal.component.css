@@ -1,0 +1,15 @@
+img{
+  height: 150px;
+  width: 150px;
+
+}
+.area-box{
+  align-items: center;
+}
+.alert{
+  font-size: 36px;
+}
+.card{
+  align-items: center;
+  padding: 10px;
+}

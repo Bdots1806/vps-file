@@ -1,0 +1,296 @@
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="./missingitem.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>e-Application</h2>
+      <br>
+      <form>
+        <div class="alert alert-primary">
+          Application Details
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="Name">First Name</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="Name">Middle Name</label>
+            <input type="text" class="form-control" id="MiddleName" placeholder="">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="Name">Surname </label>
+            <input type="text" class="form-control" id="Surname" placeholder="">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Permanent Address</label>
+            <textarea id="addofmiss" rows="3" class="form-control"></textarea>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Pin Code</label>
+            <input type="number" id="pinofmiss" class="form-control">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Mobile no.</label>
+            <input type="number" id="pinofmiss" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Email</label>
+            <input type="email" id="email" class="form-control">
+          </div>
+        </div>
+        <div class="alert alert-primary">
+          Incident Occurance Place
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Country</label>
+            <select class="form-control">
+              <option>select</option>
+              <option>india</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>State</label>
+            <select class="form-control">
+              <option>Select</option>
+              <option>Gujarat</option>
+              <option>Maharastra</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>House no.</label>
+            <input type="number" id="number" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Name">Socity/Building</label>
+            <input type="text" class="form-control" id="Socity/Building" placeholder="">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="Name">Street </label>
+            <input type="text" class="form-control" id="Street" placeholder="">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <select id="inputCity" class="form-control">
+              <option selected>Choose...</option>
+              <option value="C1">Ahmedabad City</option>
+              <option value="D611">Ahmedabad Rural</option>
+              <option value="D13">Amreli</option>
+              <option value="D20">Anand</option>
+              <option value="188">Arvalli</option>
+              <option value="D21">Banaskantha</option>
+              <option value="D22">Bharuch</option>
+              <option value="D23">Bhavnagar</option>
+              <option value="190">Botad</option>
+              <option value="184">Chhotaudepur</option>
+              <option value="D24">Dahod</option>
+              <option value="D25">Dang</option>
+              <option value="185">Devbhumi Dwarka</option>
+              <option value="D26">Gandhinagar</option>
+              <option value="186">Gir Somnath</option>
+              <option value="D3">Jamnagar</option>
+              <option value="D4">Junagadh</option>
+              <option value="D5">Kheda</option>
+              <option value="D614">Kutch East- Gandhidham</option>
+              <option value="D6">Kutch West- Bhuj</option>
+              <option value="187">Mahisagar</option>
+              <option value="D7">Mehsana</option>
+              <option value="189">Morbi</option>
+              <option value="D8">Narmada</option>
+              <option value="D9">Navsari</option>
+              <option value="D10">Panchmahal</option>
+              <option value="D11">Patan</option>
+              <option value="D12">Porbandar</option>
+              <option value="C3">Rajkot City</option>
+              <option value="D14">Rajkot Rural</option>
+              <option value="D15">Sabarkantha</option>
+              <option value="C2">Surat City</option>
+              <option value="D16">Surat Rural</option>
+              <option value="D17">Surendranagar</option>
+              <option value="D612">Tapi</option>
+              <option value="C4">Vadodara City</option>
+              <option value="D18">Vadodara Rural</option>
+              <option value="D19">Valsad</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="Name">Area</label>
+            <input type="text" class="form-control" id="Area" placeholder="">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Pin Code</label>
+            <input type="number" id="pinofmiss" class="form-control">
+          </div>
+        </div>
+        <div class="alert alert-primary">
+          complaint/Application Details
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="type">Type</label>
+            <select id="type" class="form-control">
+              <option selected>select</option>
+              <option>Application</option>
+              <option>Information</option>
+              <option>Cyber Crime</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputCity">City/District</label>
+            <select id="inputCity" class="form-control">
+              <option selected>Choose...</option>
+              <option value="C1">Ahmedabad City</option>
+              <option value="D611">Ahmedabad Rural</option>
+              <option value="D13">Amreli</option>
+              <option value="D20">Anand</option>
+              <option value="188">Arvalli</option>
+              <option value="D21">Banaskantha</option>
+              <option value="D22">Bharuch</option>
+              <option value="D23">Bhavnagar</option>
+              <option value="190">Botad</option>
+              <option value="184">Chhotaudepur</option>
+              <option value="D24">Dahod</option>
+              <option value="D25">Dang</option>
+              <option value="185">Devbhumi Dwarka</option>
+              <option value="D26">Gandhinagar</option>
+              <option value="186">Gir Somnath</option>
+              <option value="D3">Jamnagar</option>
+              <option value="D4">Junagadh</option>
+              <option value="D5">Kheda</option>
+              <option value="D614">Kutch East- Gandhidham</option>
+              <option value="D6">Kutch West- Bhuj</option>
+              <option value="187">Mahisagar</option>
+              <option value="D7">Mehsana</option>
+              <option value="189">Morbi</option>
+              <option value="D8">Narmada</option>
+              <option value="D9">Navsari</option>
+              <option value="D10">Panchmahal</option>
+              <option value="D11">Patan</option>
+              <option value="D12">Porbandar</option>
+              <option value="C3">Rajkot City</option>
+              <option value="D14">Rajkot Rural</option>
+              <option value="D15">Sabarkantha</option>
+              <option value="C2">Surat City</option>
+              <option value="D16">Surat Rural</option>
+              <option value="D17">Surendranagar</option>
+              <option value="D612">Tapi</option>
+              <option value="C4">Vadodara City</option>
+              <option value="D18">Vadodara Rural</option>
+              <option value="D19">Valsad</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="type">Police Station</label>
+            <select id="type" class="form-control">
+              <option selected>select</option>
+              <option>Application</option>
+              <option>Information</option>
+              <option>Cyber Crime</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date of Occurrence </label>
+            <input type="radio" id="inputtype" name="inputtype" value="Exact"
+              onclick="myFunction()"><label>Exact</label>
+            <input type="radio" id="inputtype" name="inputtype" value="Approx"
+              onclick="myFunction1()"><label>Approx</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="datefrom">Date from</label>
+            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Time from</label>
+            <input type="time" class="form-control" id="timefrom" placeholder="timefrom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="datefrom">Date To</label>
+            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Time To</label>
+            <input type="time" class="form-control" id="timefrom" placeholder="timefrom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-9">
+            <label>Brief Description(Maximum 2000 characters)</label>
+            <textarea id="briefD" class="form-control" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="card alert alert-warning">
+          <div class="form-group">
+            <label>Upload Documents</label>
+            <input type="file" class="form-control" multiple><br>
+            <h5 class="note"> Note: Maximum 5 files allowed(Only PDF,,JPEG,,PNG,,JPG are allowed))</h5>
+          </div>
+        </div>
+
+        <div class="alert alert-light">
+          <h4>Disclaimer</h4>
+          The facility of complaint on this site is purly a measure of public service.
+          The complaint cannot be treated as First Information Report.while every effort
+          has been made to ensure the prompt and accurate action,Gujarat Police and Home
+          Department,Government of Gujarat does not hold itself liable in any aspect,for any
+          consequences,legal or otherwise.
+          <h4>Warning</h4>
+          Legal action will be taken under the relevant law of india
+          against the person who misuses the portal.
+          <div class="form-check">
+            <br>
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              I Agree
+            </label>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("vehicle");
+      var z = document.getElementById("other");
+      x.style.display = "block";
+      z.style.display = "none";
+    }
+    function myFunction1() {
+      var x = document.getElementById("vehicle");
+      var z = document.getElementById("other");
+      z.style.display = "block";
+      x.style.display = "none";
+    };
+  </script>
+</body>
+
+</html>
