@@ -113,23 +113,11 @@ router.put(
 );
 
 router.get("", (req, res, next) => {
-  const pageSize = +req.query.pagesize;
-  const currentPage = +req.query.page;
-  const appQuery = App.find();
-  let fetchedPosts;
-  if (pageSize && currentPage) {
-    appQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
-  }
-  appQuery
-    .then(documents => {
-      fetchedApps = documents;
-      return App.count();
-    })
-    .then(count => {
+  PV.find()
+  .then(documents => {
       res.status(200).json({
-        message: "Posts fetched successfully!",
-        apps: fetchedApps,
-        maxApps: count
+        message: "Post Fetched",
+        apps: documents
       });
     });
 });

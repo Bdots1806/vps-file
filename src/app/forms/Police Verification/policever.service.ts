@@ -10,7 +10,7 @@ import { title } from 'process';
 export class PVService {
 
   private apps: PV[] = [];
-  private appsUpdated = new Subject<{ apps: PV[]; appCount: number }>();
+  private appsUpdated = new Subject<PV[]>();
 
   constructor(private http: HttpClient, private router: Router) { }
   addapp(fname: string,
@@ -62,54 +62,49 @@ export class PVService {
       });
   }
 
-  getapp(appsperpage: number, currentPage: number): any{
-    const queryParams = '?pagesize=${postsPerPage}&page=${currentPage}';
-    this.http.get<{ message: string; apps: any; maxApps: number}>(
-      'http://localhost:3000/api/policever/' + queryParams
+  getapps() {
+    // const queryParams = '?pagesize=${postsPerPage}&page=${currentPage}';
+    this.http.get<{ message: string; apps: any }>(
+      'http://localhost:3000/api/policever'
     ).pipe(
       map(appData => {
-        return{
-          apps: appData.apps.map(app => {
-            return {
-              id: app._id,
-              fname: app.fname,
-         mname: app.mname,
-         surname: app.surname,
-         mobile: app.mobile,
-         anumber: app.anumber,
-         email: app.email,
-         country: app.country,
-         state: app.sttate,
-         district: app.district,
-         pstation: app.pstation,
-         address: app.address,
-         occupation: app.occupation,
-         city: app.city,
-         pincode: app.pincode,
-         pnumber: app.pnumber,
-         pidate: app.pidate,
-         pedate: app.pedate,
-         adprof: app.adprof,
-         pov: app.pov,
-         imagePath: app.imagePath
-            };
-          }),
-          maxApps: appData.maxApps
-        };
+        return appData.apps.map(app => {
+          return {
+            id: app._id,
+            fname: app.fname,
+            mname: app.mname,
+            surname: app.surname,
+            mobile: app.mobile,
+            anumber: app.anumber,
+            email: app.email,
+            country: app.country,
+            state: app.state,
+            district: app.district,
+            pstation: app.pstation,
+            address: app.address,
+            occupation: app.occupation,
+            city: app.city,
+            pincode: app.pincode,
+            pnumber: app.pnumber,
+            pidate: app.pidate,
+            pedate: app.pedate,
+            adprof: app.adprof,
+            pov: app.pov,
+            imagePath: app.imagePath
+          };
+        });
+        // maxApps: appData.maxApps
       })
     )
-    .subscribe(transformedAppData => {
-      this.apps = transformedAppData.apps;
-      this.appsUpdated.next({
-        apps: [...this.apps],
-        appCount: transformedAppData.maxApps
+      .subscribe(transformedApps => {
+        this.apps = transformedApps;
+        this.appsUpdated.next([...this.apps]);
       });
-    });
   }
 
-  // getAppUpdateListener(){
-  //   return this.appsUpdated.asObservable();
-  // }
+  getAppUpdateListener() {
+    return this.appsUpdated.asObservable();
+  }
 
   // getappo(id: string) {
   //   return this.http.get<{

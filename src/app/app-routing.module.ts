@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { from } from 'rxjs';
 import { authComponent } from './auth/auth.component';
+import { FormlistComponent } from './form-list/form-list.component';
 import { ApplicationComponent } from './forms/e-application/e-application.component';
 import { MissingItemComponent } from './forms/Missing Item/missingitem.component';
 import { MissingPersonComponent } from './forms/Missing person/missingperson.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'NOC', component: NOCComponent},
   { path: 'PoliceVerification', component: PoliceVerificationComponent},
   { path: 'TenentReg', component: TenentRegistrationComponent},
-  { path: 'userpanal', component: UserPanalComponent}
+  { path: 'userpanal', component: UserPanalComponent},
+  { path: 'applist', component: FormlistComponent}
 ];
 
 @NgModule({
