@@ -49,67 +49,67 @@ export class PoliceVerificationComponent implements OnInit{
         // asyncValidators: [mimeType]
       })
     });
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('PVId')) {
-        this.mode = 'edit';
-        this.PVId = paramMap.get('PVId');
-        this.isLoading = true;
-        this.PVService.getappo(this.PVId).subscribe(appData => {
-          this.isLoading = false;
-          this.app = {
-            id: appData._id,
-            fname: appData.fname,
-            mname: appData.mname,
-            surname: appData.surname,
-            mobile: appData.mobile,
-            anumber: appData.anumber,
-            email: appData.email,
-            country: appData.country,
-            state: appData.state,
-            district: appData.district,
-            pstation: appData.pstation,
-            address: appData.address,
-            occupation: appData.occupation,
-            city: appData.city,
-            pincode: appData.pincode,
-            pnumber: appData.pnumber,
-            pidate: appData.pidate,
-            pedate: appData.pedate,
-            adprof: appData.adprof,
-            pov: appData.pov,
-            imagePath: appData.imagePath
-          };
-          this.form.setValue({
-            fname: this.app.fname,
-            mname: this.app.mname,
-            surname: this.app.surname,
-            mobile: this.app.mobile,
-            anumber: this.app.anumber,
-            email: this.app.email,
-            country: this.app.country,
-            state: this.app.state,
-            district: this.app.district,
-            pstation: this.app.pstation,
-            address: this.app.address,
-            occupation: this.app.occupation,
-            city: this.app.city,
-            pincode: this.app.pincode,
-            pnumber: this.app.pnumber,
-            pidate: this.app.pidate,
-            pedate: this.app.pedate,
-            adprof: this.app.adprof,
-            pov: this.app.pov,
-            image: this.app.imagePath
-          });
-        });
-      } else {
-        this.mode = 'create';
-        this.PVId = null;
-      }
-    });
+  //   this.route.paramMap.subscribe((paramMap: ParamMap) => {
+  //     if (paramMap.has('PVId')) {
+  //       this.mode = 'edit';
+  //       this.PVId = paramMap.get('PVId');
+  //       this.isLoading = true;
+  //       this.PVService.getappo(this.PVId).subscribe(appData => {
+  //         this.isLoading = false;
+  //         this.app = {
+  //           id: appData._id,
+  //           fname: appData.fname,
+  //           mname: appData.mname,
+  //           surname: appData.surname,
+  //           mobile: appData.mobile,
+  //           anumber: appData.anumber,
+  //           email: appData.email,
+  //           country: appData.country,
+  //           state: appData.state,
+  //           district: appData.district,
+  //           pstation: appData.pstation,
+  //           address: appData.address,
+  //           occupation: appData.occupation,
+  //           city: appData.city,
+  //           pincode: appData.pincode,
+  //           pnumber: appData.pnumber,
+  //           pidate: appData.pidate,
+  //           pedate: appData.pedate,
+  //           adprof: appData.adprof,
+  //           pov: appData.pov,
+  //           imagePath: appData.imagePath
+  //         };
+  //         this.form.setValue({
+  //           fname: this.app.fname,
+  //           mname: this.app.mname,
+  //           surname: this.app.surname,
+  //           mobile: this.app.mobile,
+  //           anumber: this.app.anumber,
+  //           email: this.app.email,
+  //           country: this.app.country,
+  //           state: this.app.state,
+  //           district: this.app.district,
+  //           pstation: this.app.pstation,
+  //           address: this.app.address,
+  //           occupation: this.app.occupation,
+  //           city: this.app.city,
+  //           pincode: this.app.pincode,
+  //           pnumber: this.app.pnumber,
+  //           pidate: this.app.pidate,
+  //           pedate: this.app.pedate,
+  //           adprof: this.app.adprof,
+  //           pov: this.app.pov,
+  //           image: this.app.imagePath
+  //         });
+  //       });
+  //     } else {
+  //       this.mode = 'create';
+  //       this.PVId = null;
+  //     }
+  //   });
   }
 
-  onImagePicked(event: Event): any {
+    onImagePicked(event: Event): any {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ image: file });
     this.form.get('image').updateValueAndValidity();
@@ -121,7 +121,7 @@ export class PoliceVerificationComponent implements OnInit{
   }
 
   // tslint:disable-next-line:typedef
-  onSaveForm() {
+    onSaveForm() {
     if (this.form.invalid) {
       return;
     }

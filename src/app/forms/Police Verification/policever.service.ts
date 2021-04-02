@@ -54,7 +54,7 @@ export class PVService {
     appData.append('adprof', adprof);
     appData.append('pov', pov);
     appData.append('image', image, title);
-    this.http.post<{ message: string; apps: PV }>(
+    this.http.post<{ message: string; app: PV }>(
       'http://localhost:3000/api/policever/',
       appData)
       .subscribe(responseData => {
@@ -107,32 +107,32 @@ export class PVService {
     });
   }
 
-  getAppUpdateListener(){
-    return this.appsUpdated.asObservable();
-  }
+  // getAppUpdateListener(){
+  //   return this.appsUpdated.asObservable();
+  // }
 
-  getappo(id: string) {
-    return this.http.get<{
-      _id: string,
-      fname: string,
-      mname: string,
-      surname: string,
-      mobile: string,
-      anumber: string,
-      email: string,
-      country: string,
-      state: string,
-      district: string,
-      pstation: string,
-      address: string,
-      occupation: string,
-      city: string,
-      pincode: string,
-      pnumber: string,
-      pidate: string,
-      pedate: string,
-      adprof: string,
-      pov: string,
-      imagePath: string}>('http://localhost:3000/api/policever/' + id);
-  }
+  // getappo(id: string) {
+  //   return this.http.get<{
+  //     _id: string,
+  //     fname: string,
+  //     mname: string,
+  //     surname: string,
+  //     mobile: string,
+  //     anumber: string,
+  //     email: string,
+  //     country: string,
+  //     state: string,
+  //     district: string,
+  //     pstation: string,
+  //     address: string,
+  //     occupation: string,
+  //     city: string,
+  //     pincode: string,
+  //     pnumber: string,
+  //     pidate: string,
+  //     pedate: string,
+  //     adprof: string,
+  //     pov: string,
+  //     imagePath: string}>('http://localhost:3000/api/policever/' + id);
+  // }
 }

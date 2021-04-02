@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 
 router.post(
   "",
-  checkAuth,
+  // checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -74,7 +74,7 @@ router.post(
 
 router.put(
   "/:id",
-  checkAuth,
+  // checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -144,7 +144,8 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.delete("/:id", checkAuth, (req, res, next) => {
+router.delete("/:id", //checkAuth,
+(req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "Post deleted!" });

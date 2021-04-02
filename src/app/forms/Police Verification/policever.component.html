@@ -460,7 +460,8 @@
         <div class="card alert alert-warning">
           <div class="form-group">
             <label>Upload Documents</label>
-            <input type="file" (click)="filePicker.click()" class="form-control" #filePicker (change)="onImagePicked($event)" multiple><br>
+            <button type="submit" class="btn btn-primary" (click)="filePicker.click()">Submit</button>
+            <input type="file" class="form-control" #filePicker (change)="onImagePicked($event)"><br>
             <h5 class="note"> note Maximum 5 files allowed(Only PDF,,JPEG,,PNG,,JPG are allowed))</h5>
           </div>
         </div>

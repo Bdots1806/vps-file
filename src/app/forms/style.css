@@ -10,3 +10,7 @@
 .note {
   color: darkred;
 }
+input[type="file"] {
+  visibility: hidden;
+}
+

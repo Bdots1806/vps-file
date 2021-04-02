@@ -14,6 +14,7 @@ import { PoliceVerificationComponent } from './forms/Police Verification/policev
 import { TenentRegistrationComponent } from './forms/Tenent/tenentreg.component';
 import { headerComponent } from './header/header.component';
 import { UserPanalComponent } from './Userpanal/userpanal.component';
+import { FormlistComponent } from './form-list/form-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserPanalComponent } from './Userpanal/userpanal.component';
     NOCComponent,
     PoliceVerificationComponent,
     TenentRegistrationComponent,
-    UserPanalComponent
+    UserPanalComponent,
+    FormlistComponent
   ],
   imports: [
     BrowserModule,
