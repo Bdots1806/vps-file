@@ -8,18 +8,44 @@
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
-          <p>{{ app.fname }}  {{ app.surname }}</p>
+          <table class="table">
+            <tr>
+              <th>Application ID</th>
+              <th>{{ app.id }}</th>
+            </tr>
+          </table>
         </button>
       </h2>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        <table>
-          <tr>
-            <td>{{app.address}}</td>
-            <td>{{app.address}}</td>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Applicant Name</th>
+              <th scope="col">Aadhar Card Number</th>
+              <th scope="col">State</th>
+              <th scope="col">District</th>
+              <th scope="col">Pincode</th>
+              <th scope="col">Police Station</th>
+              <th scope="col">Purpose of Verification</th>
+              <th scope="col">Passport Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td>{{ app.fname }} {{ app.surname }}</td>
+            <td>{{ app.anumber }}</td>
+            <td>{{ app.state }}</td>
+            <td>{{ app.district }}</td>
+            <td>{{ app.pincode }}</td>
+            <td>{{ app.pstation }}</td>
+            <td>{{ app.pov }}</td>
+            <td>{{ app.pnumber }}</td>
           </tr>
+          </tbody>
+
         </table>
       </div>
     </div>
