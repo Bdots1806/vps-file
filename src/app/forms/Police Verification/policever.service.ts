@@ -90,7 +90,8 @@ export class PVService {
             pedate: app.pedate,
             adprof: app.adprof,
             pov: app.pov,
-            imagePath: app.imagePath
+            imagePath: app.imagePath,
+            creator: app.creator
           };
         });
         // maxApps: appData.maxApps
@@ -130,4 +131,15 @@ export class PVService {
   //     pov: string,
   //     imagePath: string}>('http://localhost:3000/api/policever/' + id);
   // }
+
+  deleteapp(appID: string){
+    this.http.delete('http://localhost:3000/api/policever/' + appID)
+    .subscribe(() => {
+      const updatedApps = this.apps.filter(app => app.id !== appID);
+      this.apps = updatedApps;
+      this.appsUpdated.next([...this.apps]);
+    });
+  }
 }
+
+

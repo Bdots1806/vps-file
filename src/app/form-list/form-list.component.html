@@ -1,54 +1,71 @@
 <div class="container">
-<div class="accordion" id="accordionExample">
-  <div class="alert alert-info">
-    From List
-  </div>
-  <div class="card" *ngFor="let app of apps">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
-          <table class="table">
-            <tr>
-              <th>Application ID</th>
-              <th>{{ app.id }}</th>
-            </tr>
-          </table>
-        </button>
-      </h2>
+  <div class="accordion" id="accordionExample">
+    <div class="alert alert-info">
+      From List
     </div>
+    <mat-tab-group>
+      <mat-tab label="1st Tab">
+        <div class="card" *ngFor="let app of apps">
+          <div class="card-header" id="headingOne">
+            <h2 class="mt-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <!-- <table class="table">
+                  <tr>
+                    <th>Application ID</th>
+                    <th>{{ app.id }}</th>
+                  </tr>
+                </table> -->
+                Application ID : {{app.id}}
+              </button>
+            </h2>
+          </div>
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Applicant Name</th>
-              <th scope="col">Aadhar Card Number</th>
-              <th scope="col">State</th>
-              <th scope="col">District</th>
-              <th scope="col">Pincode</th>
-              <th scope="col">Police Station</th>
-              <th scope="col">Purpose of Verification</th>
-              <th scope="col">Passport Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <td>{{ app.fname }} {{ app.surname }}</td>
-            <td>{{ app.anumber }}</td>
-            <td>{{ app.state }}</td>
-            <td>{{ app.district }}</td>
-            <td>{{ app.pincode }}</td>
-            <td>{{ app.pstation }}</td>
-            <td>{{ app.pov }}</td>
-            <td>{{ app.pnumber }}</td>
-          </tr>
-          </tbody>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Applicant Name</th>
+                    <th scope="col">Aadhar Card Number</th>
+                    <th scope="col">State</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Police Station</th>
+                    <th scope="col">Purpose of Verification</th>
+                    <th scope="col">Passport Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ app.fname }} {{ app.surname }}</td>
+                    <td>{{ app.anumber }}</td>
+                    <td>{{ app.state }}</td>
+                    <td>{{ app.district }}</td>
+                    <td>{{ app.pincode }}</td>
+                    <td>{{ app.pstation }}</td>
+                    <td>{{ app.pov }}</td>
+                    <td>{{ app.pnumber }}</td>
+                  </tr>
+                </tbody>
 
-        </table>
-      </div>
-    </div>
+              </table>
+              <div class="row justify-content-end" style="margin-right: 25px;">
+                <button class="btn btn-warning" style="margin-right: 15px;"
+                  [routerLink]="['/edit', app.id]">Edit</button>
+                <button class="btn btn-danger" (click)="onDelete(app.id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="2nd Tab">Hello</mat-tab>
+      <mat-tab label="3rd Tab">hii</mat-tab>
+      <mat-tab label="4th Tab">hii</mat-tab>
+      <mat-tab label="5th Tab">hii</mat-tab>
+      <mat-tab label="6th Tab">hii</mat-tab>
+    </mat-tab-group>
+
+
   </div>
-</div>
 </div>

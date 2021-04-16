@@ -29,6 +29,10 @@ export class FormlistComponent implements OnInit, OnDestroy {
     });
   }
 
+  onDelete(appID: string){
+    this.pvService.deleteapp(appID);
+  }
+
   // onChangedPage(pageData: PageEvent) {
   //   this.currentPage = pageData.pageIndex + 1;
   //   this.appsPerPage = pageData.pageSize;

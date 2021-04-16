@@ -6,4 +6,5 @@
     <img src="assets/policeshield.png" width="50" height="50" class="d-inline-block align-top" alt="">
     Virtual Police Station
   </a>
+  <button *ngIf="userIsAuthenticated" type="button" class="btn btn-danger" (click)="onLogout()">Logout</button>
 </nav>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PVSchema = mongoose.Schema({
+const NOCSchema = mongoose.Schema({
   fname: { type: String, required: true },
   mname: { type: String, required: true },
   surname: { type: String, required: true },
@@ -20,8 +20,7 @@ const PVSchema = mongoose.Schema({
   pedate: { type: String, required: true },
   adprof: { type: String, required: true },
   pov: { type: String, required: true },
-  imagePath: { type: String, required: true },
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+  imagePath: { type: String, required: true }
 });
 
-module.exports = mongoose.model("PV", PVSchema);
+module.exports = mongoose.model("NOC", NOCSchema);

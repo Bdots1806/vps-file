@@ -20,4 +20,5 @@ export interface PV {
   adprof: string;
   pov: string;
   imagePath: string;
+  creator: string;
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { from } from 'rxjs';
 import { authComponent } from './auth/auth.component';
 import { FormlistComponent } from './form-list/form-list.component';
 import { ApplicationComponent } from './forms/e-application/e-application.component';
@@ -10,22 +9,24 @@ import { NOCComponent } from './forms/NOC/noc.component';
 import { PoliceVerificationComponent } from './forms/Police Verification/policever.component';
 import { TenentRegistrationComponent } from './forms/Tenent/tenentreg.component';
 import { UserPanalComponent } from './Userpanal/userpanal.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: authComponent },
   { path: 'signup', component: authComponent },
-  { path: 'e-application', component: ApplicationComponent },
-  { path: 'MissItem', component: MissingItemComponent},
-  { path: 'MissPerson', component: MissingPersonComponent},
-  { path: 'NOC', component: NOCComponent},
-  { path: 'PoliceVerification', component: PoliceVerificationComponent},
-  { path: 'TenentReg', component: TenentRegistrationComponent},
-  { path: 'userpanal', component: UserPanalComponent},
-  { path: 'applist', component: FormlistComponent}
+  { path: 'e-application', component: ApplicationComponent, canActivate: [AuthGuard] },
+  { path: 'MissItem', component: MissingItemComponent, canActivate: [AuthGuard]},
+  { path: 'MissPerson', component: MissingPersonComponent, canActivate: [AuthGuard]},
+  { path: 'NOC', component: NOCComponent, canActivate: [AuthGuard] },
+  { path: 'PoliceVerification', component: PoliceVerificationComponent, canActivate: [AuthGuard]},
+  { path: 'TenentReg', component: TenentRegistrationComponent, canActivate: [AuthGuard]},
+  { path: 'userpanal', component: UserPanalComponent, canActivate: [AuthGuard]},
+  { path: 'applist', component: FormlistComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

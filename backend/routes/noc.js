@@ -1,7 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 
-const PV = require("../models/policever");
+const NOC = require("../models/noc");
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
@@ -34,11 +34,11 @@ const storage = multer.diskStorage({
 
 router.post(
   "",
-  checkAuth,
+  // checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
-    const app = new PV({
+    const app = new NOC({
       fname: req.body.fname,
       mname: req.body.mname,
       surname: req.body.surname,
@@ -74,7 +74,7 @@ router.post(
 
 router.put(
   "/:id",
-  checkAuth,
+  // checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -103,15 +103,11 @@ router.put(
       pedate: req.body.pedate,
       adprof: req.body.adprof,
       pov: req.body.pov,
-      imagePath: imagePath,
-      creator: req.userData.userId
+      imagePath: imagePath
     });
-    PV.updateOne({ _id: req.params.id, creator: req.userData.userId }, app).then(result => {
-      if (result.nModified > 0) {
-        res.status(200).json({ message: "Update successful!" });
-      } else {
-        res.status(401).json({ message: "Not authorized!" });
-      }
+    console.log(app);
+    Post.updateOne({ _id: req.params.id }, post).then(result => {
+      res.status(200).json({ message: "Update successful!" });
     });
   }
 );
@@ -136,15 +132,11 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.delete("/:id", checkAuth,
+router.delete("/:id", //checkAuth,
 (req, res, next) => {
-  PV.deleteOne({ _id: req.params.id, creator: req.userData.userId}).then(result => {
+  PV.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
-    if (result.n > 0) {
-      res.status(200).json({ message: "Deletion successful!" });
-    } else {
-      res.status(401).json({ message: "Not authorized!" });
-    }
+    res.status(200).json({ message: "Post deleted!" });
   });
 });
 
