@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { from, Subscription } from 'rxjs';
 import { PV } from '../forms/Police Verification/policever.module';
 import { PVService } from '../forms/Police Verification/policever.service';
+import { Challan } from '../forms/e-challan/challan.module';
+import { ChallanService } from '../forms/e-challan/challan.service';
 
 @Component({
   selector: 'app-from-list',
@@ -11,6 +13,7 @@ import { PVService } from '../forms/Police Verification/policever.service';
 
 export class FormlistComponent implements OnInit, OnDestroy {
   apps: PV[] = [];
+  challan: Challan[] = [];
   // totalApps = 0;
   // appsPerPage = 5;
   // currentPage = 1;
@@ -18,7 +21,8 @@ export class FormlistComponent implements OnInit, OnDestroy {
   private appsSub: Subscription;
 
   constructor(
-    public pvService: PVService
+    public pvService: PVService,
+    public challanService: ChallanService
   ){}
 
   ngOnInit(){
@@ -26,6 +30,11 @@ export class FormlistComponent implements OnInit, OnDestroy {
     this.appsSub = this.pvService.getAppUpdateListener().subscribe((apps: PV[]) => {
       // this.totalApps = appData.appCount;
       this.apps = apps;
+    });
+    this.challanService.getapps();
+    this.appsSub = this.challanService.getAppUpdateListener().subscribe((apps: Challan[]) => {
+      // this.totalApps = appData.appCount;
+      this.challan = apps;
     });
   }
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authComponent } from './auth/auth.component';
 import { FormlistComponent } from './form-list/form-list.component';
@@ -10,10 +10,13 @@ import { PoliceVerificationComponent } from './forms/Police Verification/policev
 import { TenentRegistrationComponent } from './forms/Tenent/tenentreg.component';
 import { UserPanalComponent } from './Userpanal/userpanal.component';
 import { AuthGuard } from './auth/auth.guard';
-
+import { pauthComponent } from './pauth/pauth.component';
+import { ChallanComponent } from './forms/e-challan/challan.component';
 const routes: Routes = [
   { path: 'login', component: authComponent },
   { path: 'signup', component: authComponent },
+  { path: 'plogin', component: pauthComponent },
+  { path: 'challan', component: ChallanComponent },
   { path: 'e-application', component: ApplicationComponent, canActivate: [AuthGuard] },
   { path: 'MissItem', component: MissingItemComponent, canActivate: [AuthGuard]},
   { path: 'MissPerson', component: MissingPersonComponent, canActivate: [AuthGuard]},

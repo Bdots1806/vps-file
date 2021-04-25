@@ -1,0 +1,49 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+
+<div class="container">
+    <h2>Police Login/Signup</h2>
+
+    <div class="card">
+        <div class="form-row">
+            <div class="col-md-6">
+                <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+                    <div class="alert alert-primary">
+                        Login
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input ngModel type="text" name="username"  #usernameInput="ngModel"  class="form-control" id="uemail" required>
+                        <label>Password</label>
+                        <input ngModel type="password" name="password" class="form-control" id="upass" #passwordInput="ngModel" required><br>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+                    <div class="alert alert-warning">
+                        Signup
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input ngModel type="text" name="name" #nameInput="ngModel" class="form-control" id="uname" required>
+                        <label>Username</label>
+                        <input ngModel type="email" name="username" #usernameInput="ngModel" class="form-control" id="uemail" required>
+                        <label>Password</label>
+                        <input ngModel type="password" name="password" #passwordInput="ngModel" class="form-control" id="upass" required>
+                        <label>Confirm Password</label>
+                        <input ngModel type="password" name="cpassword" #cpasswordInput="ngModel" class="form-control" id="cupass" required>
+                        <!-- <label>Mobile Number</label>
+                        <input ngModel type="number" name="mnumber" #mnumber="ngModel" class="form-control" id="umnumber" required> -->
+                        <label>Pincode</label>
+                        <input ngModel type="text" name="pincode" #pincodeInput="ngModel" class="form-control" id="uanumber" required>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

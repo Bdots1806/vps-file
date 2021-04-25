@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 
 const policeverRouter = require("./routes/policever");
 const userRoutes = require("./routes/user");
-
+const puserRoutes = require("./routes/puser");
+const challanRoutes = require("./routes/challan");
 
 const app = express();
 
@@ -39,7 +40,8 @@ app.use((req, res, next) => {
 
 
 app.use("/api/policever", policeverRouter);
-// app.use("/api/posts", postsRoutes);
+app.use("/api/challan", challanRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/puser", puserRoutes);
 
 module.exports = app;
