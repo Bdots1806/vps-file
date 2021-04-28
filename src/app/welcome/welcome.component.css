@@ -1,0 +1,9 @@
+img{
+  width: 100%;
+  height: 500px;
+}
+.container{
+  margin-top: 25px;
+  margin-bottom: 50px;
+  align-items: center;
+}

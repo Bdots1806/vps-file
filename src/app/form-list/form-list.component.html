@@ -4,6 +4,57 @@
       Application List
     </div>
     <mat-tab-group>
+      <mat-tab label="challan">
+        <div class="card" *ngFor="let app of challans">
+          <div class="card-header" id="headingOne">
+            <h2 class="mt-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <!-- <table class="table">
+                  <tr>
+                    <th>Application ID</th>
+                    <th>{{ app.id }}</th>
+                  </tr>
+                </table> -->
+                Application ID : {{app.id}}
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Applicant Name</th>
+                    <th scope="col">Vehical Card Number</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Police Station</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ app.fname }} {{ app.surname }}</td>
+                    <td>{{ app.vnumber }}</td>
+                    <td>{{ app.district }}</td>
+                    <td>{{ app.pincode }}</td>
+                    <td>{{ app.pstation }}</td>
+                    <td>{{ app.amount }}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+              <div class="row justify-content-end" style="margin-right: 25px;">
+                <button class="btn btn-warning" style="margin-right: 15px;"
+                  [routerLink]="['/edit', app.id]">Edit</button>
+                <button class="btn btn-danger" (click)="onDeleteC(app.id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
       <mat-tab label="Police Verification">
         <div class="card" *ngFor="let app of apps">
           <div class="card-header" id="headingOne">
@@ -59,8 +110,108 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="NOC">Hello</mat-tab>
-      <mat-tab label="e-app">hii</mat-tab>
+      <mat-tab label="NOC"><div class="card" *ngFor="let app of nocs">
+        <div class="card-header" id="headingOne">
+          <h2 class="mt-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              <!-- <table class="table">
+                <tr>
+                  <th>Application ID</th>
+                  <th>{{ app.id }}</th>
+                </tr>
+              </table> -->
+              Application ID : {{app.id}}
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Applicant Name</th>
+                  <th scope="col">NOC for</th>
+                  <th scope="col">District</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Police Station</th>
+                  <th scope="col">Noc date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ app.fname }} {{ app.surname }}</td>
+                  <td>{{ app.nocf }}</td>
+                  <td>{{ app.district }}</td>
+                  <td>{{ app.pincode }}</td>
+                  <td>{{ app.pstation }}</td>
+                  <td>{{ app.nadate }}</td>
+                </tr>
+              </tbody>
+
+            </table>
+            <div class="row justify-content-end" style="margin-right: 25px;">
+              <button class="btn btn-warning" style="margin-right: 15px;"
+                [routerLink]="['/edit', app.id]">Edit</button>
+              <button class="btn btn-danger" (click)="onDeleteN(app.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div></mat-tab>
+      <mat-tab label="e-app"><div class="card" *ngFor="let app of eapps">
+        <div class="card-header" id="headingOne">
+          <h2 class="mt-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              <!-- <table class="table">
+                <tr>
+                  <th>Application ID</th>
+                  <th>{{ app.id }}</th>
+                </tr>
+              </table> -->
+              Application ID : {{app.id}}
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Applicant Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">District</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Police Station</th>
+                  <th scope="col">Application Type</th>
+                  <th scope="col">Breif</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ app.fname }} {{ app.surname }}</td>
+                  <td>{{ app.address }}</td>
+                  <td>{{ app.district }}</td>
+                  <td>{{ app.pincode }}</td>
+                  <td>{{ app.pstation }}</td>
+                  <td>{{ app.type }}</td>
+                  <td>{{ app.bdes }}</td>
+                  <td>{{ app.dfrom }}</td>
+                </tr>
+              </tbody>
+
+            </table>
+            <div class="row justify-content-end" style="margin-right: 25px;">
+              <button class="btn btn-warning" style="margin-right: 15px;"
+                [routerLink]="['/edit', app.id]">Edit</button>
+              <button class="btn btn-danger" (click)="onDeleteE(app.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div></mat-tab>
       <mat-tab label="Missing Item">hii</mat-tab>
       <mat-tab label="Missing person">hii</mat-tab>
       <mat-tab label="Tenent">hii</mat-tab>

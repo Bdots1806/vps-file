@@ -58,7 +58,8 @@ router.post(
       pedate: req.body.pedate,
       adprof: req.body.adprof,
       pov: req.body.pov,
-      imagePath: url + "/images/" + req.file.filename
+      imagePath: url + "/images/" + req.file.filename,
+      creator: req.userData.userId
     });
     app.save().then(createdApp => {
       res.status(201).json({
@@ -138,7 +139,7 @@ router.get("/:id", (req, res, next) => {
 
 router.delete("/:id", checkAuth,
 (req, res, next) => {
-  PV.deleteOne({ _id: req.params.id, creator: req.userData.userId}).then(result => {
+  PV.deleteOne({ _id: req.params.id}).then(result => {
     console.log(result);
     if (result.n > 0) {
       res.status(200).json({ message: "Deletion successful!" });

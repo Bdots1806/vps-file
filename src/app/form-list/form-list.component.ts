@@ -4,6 +4,10 @@ import { PV } from '../forms/Police Verification/policever.module';
 import { PVService } from '../forms/Police Verification/policever.service';
 import { Challan } from '../forms/e-challan/challan.module';
 import { ChallanService } from '../forms/e-challan/challan.service';
+import { NOC } from '../forms/NOC/noc.module';
+import { NOCService } from '../forms/NOC/noc.service';
+import { EA } from '../forms/e-application/e-application.module';
+import { ApplicationService } from '../forms/e-application/e-appication.service';
 
 @Component({
   selector: 'app-from-list',
@@ -13,7 +17,9 @@ import { ChallanService } from '../forms/e-challan/challan.service';
 
 export class FormlistComponent implements OnInit, OnDestroy {
   apps: PV[] = [];
-  challan: Challan[] = [];
+  challans: Challan[] = [];
+  nocs: NOC[] = [];
+  eapps: EA[] = [];
   // totalApps = 0;
   // appsPerPage = 5;
   // currentPage = 1;
@@ -22,7 +28,9 @@ export class FormlistComponent implements OnInit, OnDestroy {
 
   constructor(
     public pvService: PVService,
-    public challanService: ChallanService
+    public challanService: ChallanService,
+    public nocService: NOCService,
+    public applicationService: ApplicationService
   ){}
 
   ngOnInit(){
@@ -34,12 +42,31 @@ export class FormlistComponent implements OnInit, OnDestroy {
     this.challanService.getapps();
     this.appsSub = this.challanService.getAppUpdateListener().subscribe((apps: Challan[]) => {
       // this.totalApps = appData.appCount;
-      this.challan = apps;
+      this.challans = apps;
+    });
+    this.nocService.getapps();
+    this.appsSub = this.nocService.getAppUpdateListener().subscribe((apps: NOC[]) => {
+      // this.totalApps = appData.appCount;
+      this.nocs = apps;
+    });
+    this.applicationService.getapps();
+    this.appsSub = this.applicationService.getAppUpdateListener().subscribe((apps: EA[]) => {
+      // this.totalApps = appData.appCount;
+      this.eapps = apps;
     });
   }
 
   onDelete(appID: string){
     this.pvService.deleteapp(appID);
+  }
+  onDeleteC(appID: string){
+    this.challanService.deleteapp(appID);
+  }
+  onDeleteN(appID: string){
+    this.nocService.deleteapp(appID);
+  }
+  onDeleteE(appID: string){
+    this.applicationService.deleteapp(appID);
   }
 
   // onChangedPage(pageData: PageEvent) {

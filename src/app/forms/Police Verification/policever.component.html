@@ -462,6 +462,9 @@
             <label>Upload Documents</label>
             <button type="submit" class="btn btn-primary" (click)="filePicker.click()">Submit</button>
             <input type="file" class="form-control" #filePicker (change)="onImagePicked($event)"><br>
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+              <img [src]="imagePreview" [alt]="form.value.title">
+            </div>
             <h5 class="note"> note Maximum 5 files allowed(Only PDF,,JPEG,,PNG,,JPG are allowed))</h5>
           </div>
         </div>

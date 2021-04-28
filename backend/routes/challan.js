@@ -122,6 +122,15 @@ router.get("/:id", (req, res, next) => {
     }
   });
 });
+router.get("/:vnumber", (req, res, next) => {
+  Challan.findOne({ vnumber: req.params.vnumber}).then(app => {
+    if (app) {
+      res.status(200).json(app);
+    } else {
+      res.status(404).json({ message: "Post not found!" });
+    }
+  });
+});
 
 router.delete("/:id", //checkAuth,
 (req, res, next) => {

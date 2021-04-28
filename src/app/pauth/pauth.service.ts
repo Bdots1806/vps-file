@@ -45,8 +45,8 @@ export class AuthService {
       });
   }
 
-  login(email: string, password: string) {
-    const authData = { email: email, password: password };
+  login(username: string, password: string) {
+    const authData = { username: username, password: password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string; pincode: string }>(
         'http://localhost:3000/api/puser/login',
@@ -66,7 +66,7 @@ export class AuthService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userId, this.pincode);
-          this.router.navigate(['/applist']);
+          this.router.navigate(['/challan']);
         }
       });
   }

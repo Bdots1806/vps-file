@@ -1,7 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 
-const NOC = require("../models/noc");
+const EA = require("../models/eapp");
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
@@ -34,11 +34,11 @@ const storage = multer.diskStorage({
 
 router.post(
   "",
-  checkAuth,
+  //checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
-    const app = new NOC({
+    const app = new EA({
       fname: req.body.fname,
       mname: req.body.mname,
       surname: req.body.surname,
@@ -46,13 +46,23 @@ router.post(
       pincode: req.body.pincode,
       mobile: req.body.mobile,
       email: req.body.email,
-      nadate: req.body.nadate,
-      ponoc: req.body.ponoc,
-      nocf: req.body.nocf,
+      country: req.body.country,
+      state: req.body.state,
+      hnumber: req.body.hnumber,
+      soc: req.body.soc,
+      street: req.body.street,
+      city: req.body.city,
+      area: req.body.area,
+      apincode: req.body.apincode,
+      type: req.body.type,
       district: req.body.district,
       pstation: req.body.pstation,
-      imagePath: url + "/images/" + req.file.filename,
-      creator: req.userData.userId
+      dfrom: req.body.dfrom,
+      tfrom: req.body.tfrom,
+      dto: req.body.dto,
+      tto: req.body.tto,
+      bdes: req.body.bdes,
+      imagePath: url + "/images/" + req.file.filename
     });
     app.save().then(createdApp => {
       res.status(201).json({
@@ -68,7 +78,7 @@ router.post(
 
 router.put(
   "/:id",
-  checkAuth,
+  // checkAuth,
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
     let imagePath = req.body.imagePath;
@@ -76,7 +86,7 @@ router.put(
       const url = req.protocol + "://" + req.get("host");
       imagePath = url + "/images/" + req.file.filename;
     }
-    const app = new NOC({
+    const app = new EA({
       _id: req.body.id,
       fname: req.body.fname,
       mname: req.body.mname,
@@ -85,24 +95,37 @@ router.put(
       pincode: req.body.pincode,
       mobile: req.body.mobile,
       email: req.body.email,
-      nadate: req.body.nadate,
-      ponoc: req.body.ponoc,
-      nocf: req.body.nocf,
+      country: req.body.country,
+      state: req.body.state,
+      hnumber: req.body.hnumber,
+      soc: req.body.soc,
+      street: req.body.street,
+      city: req.body.city,
+      area: req.body.area,
+      apincode: req.body.apincode,
+      type: req.body.type,
       district: req.body.district,
       pstation: req.body.pstation,
+      dfrom: req.body.dfrom,
+      tfrom: req.body.tfrom,
+      dto: req.body.dto,
+      tto: req.body.tto,
+      bdes: req.body.bdes,
       imagePath: imagePath,
-      creator: req.userData.userId
     });
-    console.log(app);
-    Post.updateOne({ _id: req.params.id }, post).then(result => {
-      res.status(200).json({ message: "Update successful!" });
+    EA.updateOne({ _id: req.params.id, creator: req.userData.userId }, app).then(result => {
+      if (result.nModified > 0) {
+        res.status(200).json({ message: "Update successful!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
+      }
     });
   }
 );
 
 router.get("", (req, res, next) => {
-  NOC.find()
-  .then(documents => {
+  EA.find()
+    .then(documents => {
       res.status(200).json({
         message: "Post Fetched",
         apps: documents
@@ -111,7 +134,7 @@ router.get("", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-  NOC.findById(req.params.id).then(app => {
+  Post.findById(req.params.id).then(app => {
     if (app) {
       res.status(200).json(post);
     } else {
@@ -120,12 +143,17 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+
 router.delete("/:id", //checkAuth,
-(req, res, next) => {
-  NOC.deleteOne({ _id: req.params.id }).then(result => {
-    console.log(result);
-    res.status(200).json({ message: "Post deleted!" });
+  (req, res, next) => {
+    EA.deleteOne({ _id: req.params.id }).then(result => {
+      console.log(result);
+      if (result.n > 0) {
+        res.status(200).json({ message: "Deletion successful!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
+      }
+    });
   });
-});
 
 module.exports = router;

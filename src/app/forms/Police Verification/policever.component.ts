@@ -24,9 +24,8 @@ export class PoliceVerificationComponent implements OnInit{
 
   ngOnInit(): any {
     this.form = new FormGroup({
-      fname: new FormControl(null, {
-        validators: [Validators.required]
-      }),
+      fname: new FormControl(null, { validators: [Validators.required] }),
+      mname: new FormControl(null, { validators: [Validators.required] }),
       surname: new FormControl(null, { validators: [Validators.required] }),
       mobile: new FormControl(null, { validators: [Validators.required] }),
       anumber: new FormControl(null, { validators: [Validators.required] }),

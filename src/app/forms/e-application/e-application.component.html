@@ -11,42 +11,42 @@
     <div class="card">
       <h2>e-Application</h2>
       <br>
-      <form>
+      <form (submit)="onSaveForm()" [formGroup]="form">
         <div class="alert alert-primary">
           Application Details
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="Name">First Name</label>
-            <input type="text" class="form-control" id="FirstName" placeholder="">
+            <input type="text" class="form-control" id="FirstName" placeholder="" formControlName='fname'>
           </div>
           <div class="form-group col-md-4">
             <label for="Name">Middle Name</label>
-            <input type="text" class="form-control" id="MiddleName" placeholder="">
+            <input type="text" class="form-control" id="MiddleName" placeholder="" formControlName='mname'>
           </div>
           <div class="form-group col-md-4">
             <label for="Name">Surname </label>
-            <input type="text" class="form-control" id="Surname" placeholder="">
+            <input type="text" class="form-control" id="Surname" placeholder="" formControlName='surname'>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Permanent Address</label>
-            <textarea id="addofmiss" rows="3" class="form-control"></textarea>
+            <textarea id="addofmiss" rows="3" class="form-control" formControlName='address'></textarea>
           </div>
           <div class="form-group col-md-6">
             <label>Pin Code</label>
-            <input type="number" id="pinofmiss" class="form-control">
+            <input type="number" id="pinofmiss" class="form-control" formControlName='pincode'>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Mobile no.</label>
-            <input type="number" id="pinofmiss" class="form-control">
+            <input type="number" id="pinofmiss" class="form-control" formControlName='mobile'>
           </div>
           <div class="form-group col-md-6">
             <label>Email</label>
-            <input type="email" id="email" class="form-control">
+            <input type="email" id="email" class="form-control" formControlName='email'>
           </div>
         </div>
         <div class="alert alert-primary">
@@ -55,38 +55,37 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Country</label>
-            <select class="form-control">
+            <select class="form-control" formControlName='country'>
               <option>select</option>
-              <option>india</option>
+              <option value="india">india</option>
             </select>
           </div>
           <div class="form-group col-md-6">
             <label>State</label>
-            <select class="form-control">
+            <select class="form-control" formControlName='state'>
               <option>Select</option>
-              <option>Gujarat</option>
-              <option>Maharastra</option>
+              <option value="Gujarat">Gujarat</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>House no.</label>
-            <input type="number" id="number" class="form-control">
+            <input type="number" id="number" class="form-control" formControlName='hnumber'>
           </div>
           <div class="form-group col-md-6">
             <label for="Name">Socity/Building</label>
-            <input type="text" class="form-control" id="Socity/Building" placeholder="">
+            <input type="text" class="form-control" id="Socity/Building" placeholder="" formControlName='soc'>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="Name">Street </label>
-            <input type="text" class="form-control" id="Street" placeholder="">
+            <input type="text" class="form-control" id="Street" placeholder="" formControlName='street'>
           </div>
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <select id="inputCity" class="form-control">
+            <select id="inputCity" class="form-control" formControlName='city'>
               <option selected>Choose...</option>
               <option value="C1">Ahmedabad City</option>
               <option value="D611">Ahmedabad Rural</option>
@@ -132,11 +131,11 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="Name">Area</label>
-            <input type="text" class="form-control" id="Area" placeholder="">
+            <input type="text" class="form-control" id="Area" placeholder="" formControlName='area'>
           </div>
           <div class="form-group col-md-6">
             <label>Pin Code</label>
-            <input type="number" id="pinofmiss" class="form-control">
+            <input type="number" id="pinofmiss" class="form-control" formControlName='apincode'>
           </div>
         </div>
         <div class="alert alert-primary">
@@ -145,16 +144,17 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="type">Type</label>
-            <select id="type" class="form-control">
+            <select id="type" class="form-control" formControlName='type'>
               <option selected>select</option>
-              <option>Application</option>
-              <option>Information</option>
-              <option>Cyber Crime</option>
+              <option value="Application">Application</option>
+              <option value="FIR">FIR</option>
+              <option value="Information">Information</option>
+              <option value="Cyber Crime">Cyber Crime</option>
             </select>
           </div>
           <div class="form-group col-md-6">
             <label for="inputCity">City/District</label>
-            <select id="inputCity" class="form-control">
+            <select id="inputCity" class="form-control" formControlName='district'>
               <option selected>Choose...</option>
               <option value="C1">Ahmedabad City</option>
               <option value="D611">Ahmedabad Rural</option>
@@ -198,54 +198,47 @@
           </div>
           <div class="form-group col-md-6">
             <label for="type">Police Station</label>
-            <select id="type" class="form-control">
-              <option selected>select</option>
-              <option>Application</option>
-              <option>Information</option>
-              <option>Cyber Crime</option>
-            </select>
+            <input type="text" class="form-control" formControlName='pstation'>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Date of Occurrence </label>
-            <input type="radio" id="inputtype" name="inputtype" value="Exact"
-              onclick="myFunction()"><label>Exact</label>
-            <input type="radio" id="inputtype" name="inputtype" value="Approx"
-              onclick="myFunction1()"><label>Approx</label>
-          </div>
+        <div class="alert alert-primary">
+          Date of Occurance
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="datefrom">Date from</label>
-            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom">
+            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom" formControlName='dfrom'>
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Time from</label>
-            <input type="time" class="form-control" id="timefrom" placeholder="timefrom">
+            <input type="time" class="form-control" id="timefrom" placeholder="timefrom" formControlName='tfrom'>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="datefrom">Date To</label>
-            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom">
+            <input type="date" class="form-control" id="datefrom" placeholder="Datefrom" formControlName='dto'>
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Time To</label>
-            <input type="time" class="form-control" id="timefrom" placeholder="timefrom">
+            <input type="time" class="form-control" id="timefrom" placeholder="timefrom" formControlName='tto'>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-9">
             <label>Brief Description(Maximum 2000 characters)</label>
-            <textarea id="briefD" class="form-control" rows="4"></textarea>
+            <textarea id="briefD" class="form-control" rows="4" formControlName='bdes'></textarea>
           </div>
         </div>
         <div class="card alert alert-warning">
           <div class="form-group">
             <label>Upload Documents</label>
-            <input type="file" class="form-control" multiple><br>
-            <h5 class="note"> Note: Maximum 5 files allowed(Only PDF,,JPEG,,PNG,,JPG are allowed))</h5>
+            <button  class="btn btn-primary" (click)="filePicker.click()">Submit</button>
+            <input type="file" class="form-control" #filePicker (change)="onImagePicked($event)"><br>
+            <h5 class="note"> Note: Photo Proof And at least one additional proof is reqired</h5>
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+              <img [src]="imagePreview" [alt]="form.value.title">
+            </div>
           </div>
         </div>
 

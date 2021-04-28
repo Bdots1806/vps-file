@@ -12,7 +12,9 @@ import { UserPanalComponent } from './Userpanal/userpanal.component';
 import { AuthGuard } from './auth/auth.guard';
 import { pauthComponent } from './pauth/pauth.component';
 import { ChallanComponent } from './forms/e-challan/challan.component';
+import { IComponent } from './welcome/wecome.component';
 const routes: Routes = [
+  { path: '', component: IComponent },
   { path: 'login', component: authComponent },
   { path: 'signup', component: authComponent },
   { path: 'plogin', component: pauthComponent },
@@ -20,7 +22,7 @@ const routes: Routes = [
   { path: 'e-application', component: ApplicationComponent, canActivate: [AuthGuard] },
   { path: 'MissItem', component: MissingItemComponent, canActivate: [AuthGuard]},
   { path: 'MissPerson', component: MissingPersonComponent, canActivate: [AuthGuard]},
-  { path: 'NOC', component: NOCComponent, canActivate: [AuthGuard] },
+  { path: 'NOC', component: NOCComponent, canActivate: [AuthGuard]},
   { path: 'PoliceVerification', component: PoliceVerificationComponent, canActivate: [AuthGuard]},
   { path: 'TenentReg', component: TenentRegistrationComponent, canActivate: [AuthGuard]},
   { path: 'userpanal', component: UserPanalComponent, canActivate: [AuthGuard]},

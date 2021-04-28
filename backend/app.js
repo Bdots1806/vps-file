@@ -7,7 +7,8 @@ const policeverRouter = require("./routes/policever");
 const userRoutes = require("./routes/user");
 const puserRoutes = require("./routes/puser");
 const challanRoutes = require("./routes/challan");
-
+const nocRouters = require("./routes/noc");
+const eappRouters = require("./routes/eapp");
 const app = express();
 
 mongoose
@@ -38,10 +39,11 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use("/api/policever", policeverRouter);
 app.use("/api/challan", challanRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/puser", puserRoutes);
+app.use("/api/noc", nocRouters);
+app.use("/api/eapp", eappRouters);
 
 module.exports = app;

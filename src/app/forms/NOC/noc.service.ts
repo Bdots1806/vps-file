@@ -3,59 +3,45 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { PV } from './policever.module';
+import { NOC } from './noc.module';
 import { title } from 'process';
 
 @Injectable({ providedIn: 'root' })
-export class PVService {
+export class NOCService {
 
-  private apps: PV[] = [];
-  private appsUpdated = new Subject<PV[]>();
+  private apps: NOC[] = [];
+  private appsUpdated = new Subject<NOC[]>();
 
   constructor(private http: HttpClient, private router: Router) { }
   addapp(fname: string,
          mname: string,
          surname: string,
+         address: string,
+         pincode: string,
          mobile: string,
-         anumber: string,
          email: string,
-         country: string,
-         state: string,
+         nadate: string,
+         ponoc: string,
+         nocf: string,
          district: string,
          pstation: string,
-         address: string,
-         occupation: string,
-         city: string,
-         pincode: string,
-         pnumber: string,
-         pidate: string,
-         pedate: string,
-         adprof: string,
-         pov: string,
          image: File): any {
     const appData = new FormData();
     appData.append('fname', fname);
     appData.append('mname', mname);
     appData.append('surname', surname);
+    appData.append('address', address);
+    appData.append('pincode', pincode);
     appData.append('mobile', mobile);
-    appData.append('anumber', anumber);
     appData.append('email', email);
-    appData.append('country', country);
-    appData.append('state', state);
+    appData.append('nadate', nadate);
+    appData.append('ponoc', ponoc);
+    appData.append('nocf', nocf);
     appData.append('district', district);
     appData.append('pstation', pstation);
-    appData.append('address', address);
-    appData.append('occupation', occupation);
-    appData.append('city', city);
-    appData.append('pincode', pincode);
-    appData.append('pnumber', pnumber);
-    appData.append('pidate', pidate);
-    appData.append('pedate', pedate);
-    appData.append('adprof', adprof);
-    appData.append('pov', pov);
     appData.append('image', image, title);
-    this.http.post<{ message: string; app: PV }>(
-      'http://localhost:3000/api/policever/',
+    this.http.post<{ message: string; app: NOC }>(
+      'http://localhost:3000/api/noc/',
       appData)
       .subscribe(responseData => {
         this.router.navigate(['/applist']);
@@ -65,7 +51,7 @@ export class PVService {
   getapps() {
     // const queryParams = '?pagesize=${postsPerPage}&page=${currentPage}';
     this.http.get<{ message: string; apps: any }>(
-      'http://localhost:3000/api/policever'
+      'http://localhost:3000/api/noc'
     ).pipe(
       map(appData => {
         return appData.apps.map(app => {
@@ -74,22 +60,15 @@ export class PVService {
             fname: app.fname,
             mname: app.mname,
             surname: app.surname,
+            address: app.address,
+            pincode: app.pincode,
             mobile: app.mobile,
-            anumber: app.anumber,
             email: app.email,
-            country: app.country,
-            state: app.state,
+            nadate: app.nadate,
+            ponoc: app.ponoc,
+            nocf: app.nocf,
             district: app.district,
             pstation: app.pstation,
-            address: app.address,
-            occupation: app.occupation,
-            city: app.city,
-            pincode: app.pincode,
-            pnumber: app.pnumber,
-            pidate: app.pidate,
-            pedate: app.pedate,
-            adprof: app.adprof,
-            pov: app.pov,
             imagePath: app.imagePath,
             creator: app.creator
           };
@@ -133,7 +112,7 @@ export class PVService {
   // }
 
   deleteapp(appID: string){
-    this.http.delete('http://localhost:3000/api/policever/' + appID)
+    this.http.delete('http://localhost:3000/api/noc/' + appID)
     .subscribe(() => {
       const updatedApps = this.apps.filter(app => app.id !== appID);
       this.apps = updatedApps;

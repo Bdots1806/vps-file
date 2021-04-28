@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,9 @@ import { UserPanalComponent } from './Userpanal/userpanal.component';
 import { FormlistComponent } from './form-list/form-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import {AuthInterceptor} from './auth/auth-interceptor';
+import { IComponent } from './welcome/wecome.component';
+
 
 
 @NgModule({
@@ -35,7 +38,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     UserPanalComponent,
     FormlistComponent,
     pauthComponent,
-    ChallanComponent
+    ChallanComponent,
+    IComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatTabsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
