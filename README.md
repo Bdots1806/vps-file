@@ -2,7 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
-## Development server
+
+## Install Node packages
+
+Run `npm install` it will add all requried files from package.json file.
+
+## Development angular server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -25,3 +30,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Development node server
+
+Run `npm run server.js` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
